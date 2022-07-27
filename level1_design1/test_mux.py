@@ -8,7 +8,6 @@ async def basictest1_mux(dut):
     """Test for mux2"""
 
     cocotb.log.info('##### CTB: Develop your test here ########')
-    #dut.sel.value=12
     dut.inp0.value=1
     dut.inp1.value=2
     dut.inp2.value=3
@@ -52,7 +51,7 @@ async def basictest2_mux(dut):
     """Test for mux2"""
 
     cocotb.log.info('##### CTB: Develop your test here ########')
-    #dut.sel.value=12
+
     dut.inp0.value=1
     dut.inp1.value=2
     dut.inp2.value=3
@@ -97,7 +96,7 @@ async def test_mux(dut):
     """Test for mux2"""
 
     cocotb.log.info('##### CTB: Develop your test here ########')
-    #dut.sel.value=12
+
     dut.inp0.value=1
     dut.inp1.value=2
     dut.inp2.value=3
