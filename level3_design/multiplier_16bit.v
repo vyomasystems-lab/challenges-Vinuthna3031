@@ -1,4 +1,4 @@
-module array16(a,b,c);
+module multiplier_16bit(a,b,c);
  
     input [15:0]a,b;
     output [31:0]c;
@@ -69,14 +69,14 @@ module array8(a,b,c);
     input [7:0]a,b;
     output [15:0]c;
      
-    wire [15:0]q0,q1,q2,q3,c;
-    wire [7:0]q4,temp1;
+    wire [7:0]q0,q1,q2,q3,q4,temp1;
+    wire [15:0]c;
     wire [11:0]q5,q6,temp2temp3,temp4;
      
-    array4 z1(a[3:0],b[3:0],q0[15:0]);
-    array4 z2(a[7:4],b[3:0],q1[15:0]);
-    array4 z3(a[3:0],b[7:4],q2[15:0]);
-    array4 z4(a[7:4],b[7:4],q3[15:0]);
+    array4 z1(a[3:0],b[3:0],q0[7:0]);
+    array4 z2(a[7:4],b[3:0],q1[7:0]);
+    array4 z3(a[3:0],b[7:4],q2[7:0]);
+    array4 z4(a[7:4],b[7:4],q3[7:0]);
      
     assign temp1 ={4'b0,q0[7:4]};
     assign q4 = q1[7:0]+temp1;
