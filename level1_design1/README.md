@@ -96,9 +96,9 @@ For *sel=12* no logic is written.
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![]()
+![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design1/mux_fixed%20bugs.png)
 
-The updated design is checked in as adder_fix.v
+The updated design is checked in as mux_fix.v
 
 ## Verification Strategy
 
