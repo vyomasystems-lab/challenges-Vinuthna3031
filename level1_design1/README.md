@@ -2,16 +2,46 @@
 
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
-![](https://i.imgur.com/miWGA1o.png)
+![](https://drive.google.com/file/d/1iO0vpRrfoze44BEh9zbQ88ruruLMR55d/view?usp=sharing)
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (adder module here) which takes in 4-bit inputs *a* and *b* and gives 5-bit output *sum*
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (mux module here) which takes in 31 2-bit inputs *inp0-inp30*, 5-bit select line *sel* and gives 2-bit output *out*.
 
 The values are assigned to the input port using 
 ```
-dut.a.value = 7
-dut.b.value = 5
+dut.inp0.value=1
+dut.inp1.value=2
+dut.inp2.value=3
+dut.inp3.value=1
+dut.inp4.value=2
+dut.inp5.value=3
+dut.inp6.value=1
+dut.inp7.value=2
+dut.inp8.value=3
+dut.inp9.value=1
+dut.inp10.value=2
+dut.inp11.value=3
+dut.inp12.value=1
+dut.inp13.value=2
+dut.inp14.value=3
+dut.inp15.value=1
+dut.inp16.value=2
+dut.inp17.value=3
+dut.inp18.value=1
+dut.inp19.value=2
+dut.inp20.value=3
+dut.inp21.value=1
+dut.inp22.value=2
+dut.inp23.value=3
+dut.inp24.value=1
+dut.inp25.value=2
+dut.inp26.value=3
+dut.inp27.value=1
+dut.inp28.value=2
+dut.inp29.value=3
+dut.inp30.value=1
+dut.sel.value=0
 ```
 
 The assert statement is used for comparing the adder's outut to the expected value.
