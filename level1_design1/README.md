@@ -101,5 +101,7 @@ Updating the design and re-running the test makes the test pass.
 The updated design is checked in as mux_fix.v
 
 ## Verification Strategy
+First attempt was trying with the lowest and highest possible values for *sel* and then continue to check for other values(for which a *for* loop is used ).
 
 ## Is the verification complete ?
+Yes. And the bugs are sucessfully exposed.
