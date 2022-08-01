@@ -31,7 +31,7 @@ assert x=="00010010" , "Result is incorrect: {op} != {out}, expected value={EXP}
 ```
 ## Test Scenario 
 
-- Test Inputs: Each bit of "10110111" is given at the positive edge of clock.
+- Test Inputs: Each bit of "10110111" is given at the active edge of clock.
 - Expected Output: "0001010" 
 - Observed Output in the DUT: "00010000"
 
