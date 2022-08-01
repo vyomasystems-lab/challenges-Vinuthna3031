@@ -66,7 +66,7 @@ module seq_detect_1011_fix(seq_seen, inp_bit, reset, clk);
       end
       SEQ_1011:
       begin
-        next_state = IDLE; //Changed from IDLE to SEQ_1
+        next_state = SEQ_1; //Changed from IDLE to SEQ_1
       end
     endcase
   end

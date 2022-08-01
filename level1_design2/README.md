@@ -31,44 +31,51 @@ assert x=="00010010" , "Result is incorrect: {op} != {out}, expected value={EXP}
 ```
 ## Test Scenario 
 
-### Test case 2 (basictest2_mux)
-- Test Inputs: inp0-inp30 values are same as above except for the select value i.e.,*sel=30*
-- Expected Output: out=1
-- Observed Output in the DUT dut.out.value=0
+- Test Inputs: Each bit of "10110111" is given at the positive edge of clock.
+- Expected Output: "0001010" 
+- Observed Output in the DUT: "00010000"
 
-Output mismatches for the above inputs proving that there is a design bug
+Output mismatches for the above inputs proving that there is a design bug.
 
-
-![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design1/mux_failed%20test%20case.png)
+![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design2/seq_detector_failedcase.png)
 
 ## Design Bug
-Based on the input of test case 2 and analysing the design, we see the following
+Based on the testcase and analysing the design, we see the following
 
 ```
-  5'b11100: out = inp28;
-  5'b11101: out = inp29;
-  default: out = 0; 
+SEQ_1:
+begin
+  if(inp_bit == 1)
+    next_state = IDLE;  <==BUG
+  else
+    next_state = SEQ_10;
+end
+SEQ_10:
+begin
+  if(inp_bit == 1)
+    next_state = SEQ_101;
+  else
+    next_state = IDLE;
+end
+SEQ_101:
+begin
+  if(inp_bit == 1)
+    next_state = SEQ_1011;
+  else
+    next_state = IDLE;  <==BUG
+end
+SEQ_1011:
+begin
+  next_state = IDLE;  <==BUG
+end
 ```
-For the multiplexer design, if the select line value is 30 output is supposed to be the value of inp30. But there is no logic written for sel=30(5'b11110).
-
-For test case 3, we observed
-```
-  5'b01010: out = inp10;
-  5'b01011: out = inp11;
-  5'b01101: out = inp12;        <===Bug
-  5'b01101: out = inp13; 
-``` 
-For *sel=12* no logic is written.
-
-## Design Fix
-Updating the design and re-running the test makes the test pass.
-
-![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design1/mux_fixed%20bugs.png)
-
-The updated design is checked in as mux_fix.v
+As the sequence detector should include overlapping-
+When it is in the state SEQ_1, if it receives inp_bit as 1 it should be in the same state itself.
+When it is in the state SEQ_101, if it receives inp_bit as 0 it should jump to SEQ_10.
+When it is in the state SEQ_1011, it is supposed to see for inp_bit=0 so which replicates the state SEQ_1.  
 
 ## Verification Strategy
-First attempt was trying with the lowest and highest possible values for *sel* and then continue to check for other values(for which a *for* loop is used ).
+Tried giving a sequence which involves overlapping and stored seq_seen values at every active clock edge in a string and finally verified with the expected output sequence.
 
 ## Is the verification complete ?
 Yes. And the bugs are sucessfully exposed.
