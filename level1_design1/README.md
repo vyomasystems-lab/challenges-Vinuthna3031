@@ -44,7 +44,7 @@ dut.inp30.value=1
 dut.sel.value=30
 ```
 
-The assert statement is used for comparing the multiplexer's outut to the expected value.
+The assert statement is used for comparing the multiplexer's output to the expected value.
 
 The following error is seen:
 ```

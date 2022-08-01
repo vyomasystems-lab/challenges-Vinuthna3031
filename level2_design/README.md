@@ -6,7 +6,7 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 ## Verification Environment
 
-The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (buggy_multiplier_16bit module here) which takes in the inputs *CLK*, *RST_N* and *mav_putvalue_instr*, *mav_putvalue_src1*, *mav_putvalue_src2*, *mav_putvalue_src3* each of 32 bits and gives 33-bit output *mav_putvalue*.
+The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (mkbitmanip module here) which takes in the inputs *CLK*, *RST_N* and *mav_putvalue_instr*, *mav_putvalue_src1*, *mav_putvalue_src2*, *mav_putvalue_src3* each of 32 bits and gives 33-bit output *mav_putvalue*.
 
 The values are assigned to the input port using 
 ```
