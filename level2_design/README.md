@@ -2,7 +2,7 @@
 
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
-![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/vyoma.png?raw=true)
+![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/vyoma.png)
 
 ## Verification Environment
 
