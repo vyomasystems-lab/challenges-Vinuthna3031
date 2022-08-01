@@ -22,7 +22,7 @@ await FallingEdge(dut.clk)
 dut.inp_bit.value=1
 
 ```
-The assert statement is used for comparing the sequence detector's outut to the expected value.
+The assert statement is used for comparing the sequence detector's output to the expected value.
 
 The following error is seen:
 ```
