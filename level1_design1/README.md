@@ -72,7 +72,7 @@ Output mismatches for the above inputs proving that there is a design bug
 
 Output mismatches for the above inputs proving that there is a design bug
 
-![]()
+![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design1/mux_failed%20test%20case.png)
 
 ## Design Bug
 Based on the input of test case 2 and analysing the design, we see the following
