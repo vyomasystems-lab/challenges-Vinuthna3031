@@ -4,6 +4,7 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 ![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/vyoma.png)
 
+
 ## Verification Environment
 
 The [CoCoTb](https://www.cocotb.org/) based Python test is developed as explained. The test drives inputs to the Design Under Test (seq_detect_1011 module here) which takes in the inputs *clk*, *reset*, *inp_bit* each of 1 bit and gives 1-bit output *seq_seen*.
