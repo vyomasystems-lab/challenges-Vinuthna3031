@@ -13,28 +13,8 @@ from cocotb.triggers import RisingEdge, FallingEdge
 
 @cocotb.test()
 async def test_multiplier(dut):
-    dut.a.value=2
-    dut.b.value=3
+    dut.a.value=12
+    dut.b.value=13
+    await Timer(2,'ns')
     assert dut.c.value==dut.a.value*dut.b.value,"Result is incorrect: {op} != {out}, expected value={EXP}".format(
-            op=dut.a.value*dut.b.value,out=int(dut.c.value), EXP=dut.a.value*dut.b.value)
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-
+        op=int(dut.a.value * dut.b.value), out=int(dut.c.value), EXP=int(dut.a.value * dut.b.value))

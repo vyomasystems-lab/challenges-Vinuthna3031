@@ -1,4 +1,4 @@
-module multiplier_16bit_buggy(a,b,c);
+module buggy_multiplier_16bit(a,b,c);
  
     input [15:0]a,b;
     output [31:0]c;
@@ -96,6 +96,6 @@ module ha(a,b,s,c);
     input a,b;
     output s,c;
      
-    assign s = a~^b;
-    assign c = a&b;
+    assign s = a^b;
+    assign c = a+b;
 endmodule

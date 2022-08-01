@@ -4,9 +4,9 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/multiplier_16bit_buggy.v              # provide your design path
+VERILOG_SOURCES = $(PWD)/buggy_multiplier_16bit.v              # provide your design path
 
-TOPLEVEL :=multiplier_16bit_buggy          # design file
+TOPLEVEL :=buggy_multiplier_16bit          # design file
 MODULE   :=test_16bit_multiplier    # test file
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
