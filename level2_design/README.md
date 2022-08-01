@@ -38,7 +38,7 @@ Output mismatches for the above inputs proving that there is a design bug
 ![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level2_design/bitmanipulation_failedcase.png)
 
 ## Verification Strategy
-Randomly gave numbers for inputs and checked.
+Randomly gave values for inputs and checked.
 
 ## Is the verification complete ?
 Yes.
