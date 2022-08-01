@@ -30,34 +30,42 @@ async def test_seq_bug1(dut):
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=0
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=0
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
     
     dut.inp_bit.value=1
     await Timer(10, units='us')
     x+=str(dut.seq_seen.value)
+    print(int(dut.current_state.value))
 
     assert x=="00010010" , "Result is incorrect: {op} != {out}, expected value={EXP}".format(
             op="00010010",out=x, EXP="00010010")
