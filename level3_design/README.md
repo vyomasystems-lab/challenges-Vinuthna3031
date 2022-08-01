@@ -32,33 +32,21 @@ Output mismatches for the above inputs proving that there is a design bug
 ![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level3_design/failedcase.png)
 
 ## Design Bug
-Based on the input of test case 2 and analysing the design, we see the following
+Based on the test case and analysing the design, we see the following
 
 ```
-  5'b11100: out = inp28;
-  5'b11101: out = inp29;
-  default: out = 0; 
+module ha(a,b,s,c);
+    input a,b;
+    output s,c;
+     
+    assign s = a^b;
+    assign c = a+b;       <==Bug
+endmodule
 ```
-For the multiplexer design, if the select line value is 30 output is supposed to be the value of inp30. But there is no logic written for sel=30(5'b11110).
-
-For test case 3, we observed
-```
-  5'b01010: out = inp10;
-  5'b01011: out = inp11;
-  5'b01101: out = inp12;        <===Bug
-  5'b01101: out = inp13; 
-``` 
-For *sel=12* no logic is written.
-
-## Design Fix
-Updating the design and re-running the test makes the test pass.
-
-![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/level1_design1/mux_fixed%20bugs.png)
-
-The updated design is checked in as mux_fix.v
+In half adder, carry should be a&b.
 
 ## Verification Strategy
-First attempt was trying with the lowest and highest possible values for *sel* and then continue to check for other values(for which a *for* loop is used ).
+Randomly gave numbers for inputs and checked.
 
 ## Is the verification complete ?
-Yes. And the bugs are sucessfully exposed.
+Yes. And the bug is sucessfully exposed.
