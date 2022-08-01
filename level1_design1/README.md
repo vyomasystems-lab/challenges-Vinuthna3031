@@ -3,7 +3,6 @@
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
 ![](https://github.com/vyomasystems-lab/challenges-Vinuthna3031/blob/master/vyoma.png?raw=true)
-![](https://drive.google.com/file/d/1iO0vpRrfoze44BEh9zbQ88ruruLMR55d/view?usp=sharing)
 
 ## Verification Environment
 
@@ -42,38 +41,62 @@ dut.inp27.value=1
 dut.inp28.value=2
 dut.inp29.value=3
 dut.inp30.value=1
-dut.sel.value=0
+dut.sel.value=30
 ```
 
-The assert statement is used for comparing the adder's outut to the expected value.
+The assert statement is used for comparing the multiplexer's outut to the expected value.
 
 The following error is seen:
 ```
-assert dut.sum.value == A+B, "Adder result is incorrect: {A} + {B} != {SUM}, expected value={EXP}".format(
-                     AssertionError: Adder result is incorrect: 7 + 5 != 2, expected value=12
+ assert dut.out.value == dut.inp30.value, "Multiplexer output is incorrect: {op} != {out}, expected value={EXP}".format(
+                     AssertionError: Multiplexer output is incorrect: 1 != 0, expected value=1
 ```
-## Test Scenario **(Important)**
-- Test Inputs: a=7 b=5
-- Expected Output: sum=12
-- Observed Output in the DUT dut.sum=2
+## Test Scenario 
+### Test case 1 (basictest1_mux)
+- Test Inputs: inp0-inp30 values are same as above except for the select value i.e.,*sel=0*
+- Expected Output: out=1
+- Observed Output in the DUT dut.out.value=1
+Therefore, the test is passed.
+
+### Test case 2 (basictest2_mux)
+- Test Inputs: inp0-inp30 values are same as above except for the select value i.e.,*sel=30*
+- Expected Output: out=1
+- Observed Output in the DUT dut.out.value=0
 
 Output mismatches for the above inputs proving that there is a design bug
 
+### Test case 3 (test_mux)
+- Test Inputs: inp0-inp30 values are same as above except for the select value i.e.,*sel=12*
+- Expected Output: out=1
+- Observed Output in the DUT dut.out.value=0
+
+Output mismatches for the above inputs proving that there is a design bug
+
+![]()
+
 ## Design Bug
-Based on the above test input and analysing the design, we see the following
+Based on the input of test case 2 and analysing the design, we see the following
 
 ```
- always @(a or b) 
-  begin
-    sum = a - b;             ====> BUG
-  end
+  5'b11100: out = inp28;
+  5'b11101: out = inp29;
+  default: out = 0; 
 ```
-For the adder design, the logic should be ``a + b`` instead of ``a - b`` as in the design code.
+For the multiplexer design, if the select line value is 30 output is supposed to be the value of inp30. But there is no logic written for sel=30(5'b11110).
+
+For test case 3, we observed
+```
+  5'b01010: out = inp10;
+  5'b01011: out = inp11;
+  5'b01101: out = inp12;        <===Bug
+  5'b01101: out = inp13; 
+``` 
+For *sel=12* no logic is written.
 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![](https://i.imgur.com/5XbL1ZH.png)
+![]()
 
 The updated design is checked in as adder_fix.v
 
